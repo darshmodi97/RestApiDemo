@@ -8,7 +8,7 @@ admin.site.unregister(User)  # unregistered auth user model from default fields.
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ("username", "email", "last_login", "first_name", "last_name", "is_superuser")
+    list_display = ("id", "username", "email", "last_login", "first_name", "last_name", "is_superuser")
     search_fields = ("username", "email", "first_name", "last_name",)
     readonly_fields = ("last_login",)
 

@@ -14,7 +14,10 @@ class IsTokenValid(BasePermission):
     def has_permission(self, request, view):
         user_id = request.user.id
         is_allowed_user = True
-        token = request.auth.decode("utf-8")
+        if request.auth:
+            token = request.auth.decode("utf-8")
+        else:
+            return False
         try:
             is_blackListed = BlackListedToken.objects.get(user=user_id, token=token)
             if is_blackListed:
